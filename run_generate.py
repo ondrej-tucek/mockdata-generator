@@ -47,7 +47,7 @@ if __name__ == '__main__':
     # generate_directories(number_of_dir, generate_date_time, func_args)
     # generate_directories(number_of_dir, generate_date_time, func_args, path_to_dir)
 
-    input_files = ['females_name.txt', 'surnames.txt', 'servers_name.txt']
+    input_files = ['_females_name.txt', '_surnames.txt', '_websites_name.txt']
     directory_data = 'source_data/'
     args = {
         'name_sep': '.',
@@ -62,4 +62,13 @@ if __name__ == '__main__':
 
 
     print(generate_email(args))
+
+    websites_data = open_file('source_data/_websites_name.txt')
+    args = {
+        'websites_data': websites_data
+    }
+
+    print(generate_website())
+    print(generate_website(args))
+    print(generate_website(websites_data))
 

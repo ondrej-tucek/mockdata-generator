@@ -97,6 +97,7 @@ def generate_year_month_day(args=None):
 
     Raises:
         ValueError: - If 'year_from' is greater than 'year_to'.
+                    - If 'order_ymd' is not 'ymd', 'dmy' either 'myd'.
         TypeError: - If 'year_from' and 'year_to' are not integer.
                    - If 'order_ymd' is not string.
 
@@ -143,6 +144,10 @@ def generate_year_month_day(args=None):
 
         if not isinstance(args['order_ymd'], str):
             raise TypeError("Variable 'order_ymd' has to be string!")
+        if not args['order_ymd'] == 'ymd' or \
+            not args['order_ymd'] == 'dmy' or \
+            not args['order_ymd'] == 'myd':
+            raise ValueError("Variable 'order_ymd' has to be 'ymd', 'dmy' or 'myd'!")
     else:
         order_ymd = (year, month, day)
 
@@ -325,7 +330,7 @@ def generate_email(args=None):
             args['server_domain'].lstrip().rstrip()
         )
     else:
-        input_files = ['males_name.txt', 'surnames.txt', 'servers_name.txt']
+        input_files = ['_males_name.txt', '_surnames.txt', '_websites_name.txt']
         directory_data = 'source_data/'
         args = {
             'name_sep': '.',
@@ -336,6 +341,26 @@ def generate_email(args=None):
                 input_files))
         }
         return generate_email(args)
+
+
+def generate_website(args=None):
+
+    if args:
+        if isinstance(args, list):
+            return 'www.' + choice(args).lstrip().rstrip() + '.' + generate_domain()
+
+        if not 'websites_data' in args:
+            raise ValueError("Variable 'websites_data' are missing!")
+        else:
+            websites_data = args['websites_data']
+            if not isinstance(websites_data, list):
+                raise TypeError("Variable 'websites_data' has to be list!")
+
+            return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
+    else:
+        websites_data = open_file('source_data/_websites_name.txt')
+
+        return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
 
 
 def generate_files(
