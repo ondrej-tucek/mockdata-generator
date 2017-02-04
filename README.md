@@ -159,5 +159,30 @@ print(gd)
             Note: Output of generate_func has to be permissible string. 'Permissible' means
             what your system allows to save on your hard drive.</sub>
         </tr>
+        <tr>
+            <td rowspan="3">generating of domains</td>
+            <td>generate_domain()</td>
+            <td>ya</td>
+        </tr>
+        <tr>
+            <td>generate_domain()</td>
+            <td>oki</td>
+        </tr>
+        <tr>
+            <td colspan="2"><sub>Function argument is None and generates two-letter or
+            three-letter server domain.</sub>
+        </tr>
+        <tr>
+            <td rowspan="3">generating of emails</td>
+            <td>generate_email()</td>
+            <td>Elvis.Wexcombe@escavalie.cj</td>
+        </tr>
+        <tr>
+            <td>generate_email(args)</td>
+            <td>Kirstin.Westbrook@lilligant.shi</td>
+        </tr>
+        <tr>
+            <td colspan="2"><sub>Function arguments are None or args...NOT DONE.</sub>
+        </tr>
     </table>
 </center>

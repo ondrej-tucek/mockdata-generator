@@ -34,20 +34,20 @@ if __name__ == '__main__':
     # print(generate_year_month_day(func_args))
     # print(generate_year_month_day({'order_ymd': 'dmy'}))
 
-    print(generate_date())
-    print(generate_date(func_args))
-    print(generate_date({'order_ymd': 'dmy'}))
+    # print(generate_date())
+    # print(generate_date(func_args))
+    # print(generate_date({'order_ymd': 'dmy'}))
 
-    print(generate_date_time())
-    print(generate_date_time(func_args))
+    # print(generate_date_time())
+    # print(generate_date_time(func_args))
 
-    generate_files(number_of_files, generate_date_time, {}, file_format)
+    # generate_files(number_of_files, generate_date_time, {}, file_format)
     # path_to_dir = '/temp'
     # generate_files(number_of_files, generate_date_time, func_args, file_format, path_to_dir)
     # generate_directories(number_of_dir, generate_date_time, func_args)
     # generate_directories(number_of_dir, generate_date_time, func_args, path_to_dir)
 
-    input_files = ['males_name.txt', 'surnames.txt', 'servers_name.txt']
+    input_files = ['females_name.txt', 'surnames.txt', 'servers_name.txt']
     directory_data = 'source_data/'
     args = {
         'name_sep': '.',
@@ -60,4 +60,6 @@ if __name__ == '__main__':
     email = generate_email()
     print(email)
 
+
+    print(generate_email(args))
 
