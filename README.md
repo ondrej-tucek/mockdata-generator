@@ -184,5 +184,29 @@ print(gd)
         <tr>
             <td colspan="2"><sub>Function arguments are None or args...NOT DONE.</sub>
         </tr>
+            <td rowspan="4">generating of websites</td>
+            <td>generate_website()</td>
+            <td>serperior.pu</td>
+        </tr>
+        <tr>
+            <td><sub>websites_data = open_file('source_data/_websites_name.txt')</br>
+            args = {</br>
+                'websites_data': websites_data</br>
+            }</sub></br>
+            generate_website(args)
+            </td>
+            <td>swanna.nq</td>
+        </tr>
+        <tr>
+            <td><sub>websites_data = open_file('source_data/_websites_name.txt')</sub></br>
+            generate_website(websites_data)
+            </td>
+            <td>eelektros.gh</td>
+        </tr>
+        <tr>
+            <td colspan="2"><sub>Function arguments are None, args contains variable
+            'websites_data' or list of strings.</sub>
+            </td>
+        </tr>
     </table>
 </center>

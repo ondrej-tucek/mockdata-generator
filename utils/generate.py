@@ -347,10 +347,12 @@ def generate_website(args=None):
 
     if args:
         if isinstance(args, list):
-            return 'www.' + choice(args).lstrip().rstrip() + '.' + generate_domain()
+            return choice(args).lstrip().rstrip() + '.' + generate_domain()
 
         if not 'websites_data' in args:
-            raise ValueError("Variable 'websites_data' are missing!")
+            websites_data = open_file('source_data/_websites_name.txt')
+
+            return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
         else:
             websites_data = args['websites_data']
             if not isinstance(websites_data, list):
