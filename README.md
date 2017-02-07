@@ -28,6 +28,40 @@ args = {
 gd = generate_date()
 print(gd)
 ```
+```Python
+data = {}
+settings = {
+    'date_sep': '. ',
+    'order_ymd': 'dmy'
+}
+users = 'users'
+log_dates = 'log_dates'
+data[users] = []
+log_dates = []
+
+for i in xrange(3):
+    log_dates.append(
+        generate_date_time()
+    )
+
+for i in xrange(5):
+    name = generate_from_file('_females_name.txt')
+    surname = generate_from_file('_surnames.txt')
+    website = generate_from_file('_websites_name.txt')
+    domain = generate_domain()
+
+    data[users].append({
+        'id': i,
+        'name': name,
+        'surname': surname,
+        'website': 'www.'+website+'.'+domain,
+        'email': name+'.'+surname+'@'+website+'.'+domain,
+        'born': generate_date(settings),
+        'log_dates': log_dates
+    })
+
+save_file(data, 'mockdata.json')
+```
 
 <center>
     <table>
@@ -208,5 +242,22 @@ print(gd)
             'websites_data' or list of strings.</sub>
             </td>
         </tr>
+        <tr>
+            <td rowspan="3">generating from your file</td>
+            <td>generate_from_file('_females_name.txt')</td>
+            <td>Hannah</td>
+        </tr>
+        <tr>
+            <td>generate_from_file('your_file.format', 'path_to_dir_data')</td>
+            <td>Sienna</td>
+        </tr>
+        <tr>
+            <td colspan="2"><sub>Function arguments are name of file (this file has to be saved
+            in source_data directory) or name of file and path to your directory where is file.
+            Each content of row (in input file ) is saved into list from which random output is
+            generated. Default value of 'default_dir_data' is 'source_data/'.</sub>
+            </td>
+        </tr>
     </table>
 </center>
+
