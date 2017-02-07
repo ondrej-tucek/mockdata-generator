@@ -144,9 +144,9 @@ def generate_year_month_day(args=None):
 
         if not isinstance(args['order_ymd'], str):
             raise TypeError("Variable 'order_ymd' has to be string!")
-        if not args['order_ymd'] == 'ymd' or \
-            not args['order_ymd'] == 'dmy' or \
-            not args['order_ymd'] == 'myd':
+        if not (args['order_ymd'] == 'ymd' or \
+            args['order_ymd'] == 'dmy' or \
+            args['order_ymd'] == 'myd'):
             raise ValueError("Variable 'order_ymd' has to be 'ymd', 'dmy' or 'myd'!")
     else:
         order_ymd = (year, month, day)
@@ -363,6 +363,13 @@ def generate_website(args=None):
         websites_data = open_file('source_data/_websites_name.txt')
 
         return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
+
+
+def generate_from_file(infile, default_dir_data='source_data/'):
+    data_dir = default_dir_data + infile
+    data = open_file(data_dir)
+
+    return choice(data).lstrip().rstrip()
 
 
 def generate_files(

@@ -63,7 +63,7 @@ def open_file(input_file, delim=','):
         print("Probable reason: '%s'" % (input_file.split('/')[-1]))
 
 
-def save_file(data, file_name, file_format):
+def save_file(data, file_name, ra='readable'):
     """
     This function saves data to file.
 
@@ -73,35 +73,40 @@ def save_file(data, file_name, file_format):
             "from": "milky way",
             "name": "Larry"
         }]
-        save_file(data, 'mockdata', 'json') -> mockdata.json
+        save_file(data, 'mockdata.json', 'noreadable') -> mockdata.json
 
     Args:
         'data' (obj): object where are saved data.
-        'file_name' (str): name of file.
-        'file_format' (str): format of file.
+        'file_name' (str): contains file name and file format.
+        'ra': (str): {'noreadable', 'readable'} for (no)readable
+                    data in json file.
 
     Returns:
         None.
 
+    Notes:
+        - Default value of 'ra' is string 'readable'.
+
     Raises:
-        ValueError: - If 'file_name' or 'file_format' are empty string.
-        TypeError: - If 'file_name' or 'file_format' are not string.
+        ValueError: - If 'file_name' is empty string.
+        TypeError: - If 'file_name' is not string.
 
     """
 
     if not isinstance(file_name, str):
         raise TypeError("Variable 'file_name' has to be string!")
-    if not isinstance(file_format, str):
-        raise TypeError("Variable 'file_format' has to be string!")
     if file_name == '':
         raise ValueError("Variable 'file_name' has not to be empty string!")
-    if file_format == '':
-        raise ValueError("Variable 'file_format' has not to be empty string!")
 
-    file_name_format = file_name+'.'+file_format
-    with open(file_name_format, 'w') as outfile:
+    file_format = file_name.split('.')[1]
+    with open(file_name, 'w') as outfile:
         if file_format == 'json':
-            json_dump(data, outfile)
+            if ra == 'readable':
+                json_dump(data, outfile, sort_keys=True, indent=4)
+            elif ra == 'noreadable':
+                json_dump(data, outfile, sort_keys=True)
+            else:
+                raise ValueError("Variable 'ra' has to be either 'readable' or 'noreadable'!")
         else:
             outfile.write(data)
             # print("{}".format(data), file=outfile)

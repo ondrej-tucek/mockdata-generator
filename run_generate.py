@@ -10,7 +10,7 @@ __version__ = "0.0.1"
 __status__ = "Development"
 
 from utils.generate import *
-from utils.open_save_file import open_file
+from utils.open_save_file import *
 
 
 if __name__ == '__main__':
@@ -59,9 +59,8 @@ if __name__ == '__main__':
     }
     email = generate_email()
     print(email)
-
-
     print(generate_email(args))
+
 
     websites_data = open_file('source_data/_websites_name.txt')
     args = {
@@ -71,4 +70,40 @@ if __name__ == '__main__':
     print(generate_website())
     print(generate_website(args))
     print(generate_website(websites_data))
+
+    print(generate_from_file('_females_name.txt'))
+
+
+    data = {}
+    settings = {
+        'date_sep': '. ',
+        'order_ymd': 'dmy'
+    }
+    users = 'users'
+    log_dates = 'log_dates'
+    data[users] = []
+    log_dates = []
+
+    for i in xrange(3):
+        log_dates.append(
+            generate_date_time()
+        )
+
+    for i in xrange(5):
+        name = generate_from_file('_females_name.txt')
+        surname = generate_from_file('_surnames.txt')
+        website = generate_from_file('_websites_name.txt')
+        domain = generate_domain()
+
+        data[users].append({
+            'id': i,
+            'name': name,
+            'surname': surname,
+            'website': 'www.'+website+'.'+domain,
+            'email': name+'.'+surname+'@'+website+'.'+domain,
+            'born': generate_date(settings),
+            'log_dates': log_dates
+        })
+
+    save_file(data, 'mockdata.json')
 
