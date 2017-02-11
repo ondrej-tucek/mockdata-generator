@@ -9,6 +9,8 @@ __license__ = "MIT"
 __version__ = "0.0.1"
 __status__ = "Development"
 
+from random import choice
+
 from utils.generate import *
 from utils.open_save_file import *
 
@@ -67,11 +69,11 @@ if __name__ == '__main__':
         'websites_data': websites_data
     }
 
-    print(generate_website())
-    print(generate_website(args))
-    print(generate_website(websites_data))
+    # print(generate_website())
+    # print(generate_website(args))
+    # print(generate_website(websites_data))
 
-    print(generate_from_file('_females_name.txt'))
+    # print(generate_from_file('_females_name.txt'))
 
 
     data = {}
@@ -81,11 +83,14 @@ if __name__ == '__main__':
     }
     users = 'users'
     data[users] = []
+    name_data = data_from_file('_females_name.txt')
+    surname_data = data_from_file('_surnames.txt')
+    website_data = data_from_file('_websites_name.txt')
 
     for i in xrange(5):
-        name = generate_from_file('_females_name.txt')
-        surname = generate_from_file('_surnames.txt')
-        website = generate_from_file('_websites_name.txt')
+        name = choice(name_data).strip()
+        surname = choice(surname_data).strip()
+        website = choice(website_data).strip()
         domain = generate_domain()
 
         data[users].append({

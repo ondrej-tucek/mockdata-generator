@@ -37,11 +37,14 @@ settings = {
 num_of_el = 5
 users = 'users'
 data[users] = []
+name_data = data_from_file('_females_name.txt')
+surname_data = data_from_file('_surnames.txt')
+website_data = data_from_file('_websites_name.txt')
 
 for i in xrange(5):
-    name = generate_from_file('_females_name.txt')
-    surname = generate_from_file('_surnames.txt')
-    website = generate_from_file('_websites_name.txt')
+    name = choice(name_data).strip()
+    surname = choice(surname_data).strip()
+    website = choice(website_data).strip()
     domain = generate_domain()
 
     data[users].append({
@@ -237,19 +240,19 @@ save_file(data, 'mockdata.json')
             </td>
         </tr>
         <tr>
-            <td rowspan="3">generating from your file</td>
-            <td>generate_from_file('_females_name.txt')</td>
+            <td rowspan="3">data from your file</td>
+            <td>data_from_file('_females_name.txt')</td>
             <td>Hannah</td>
         </tr>
         <tr>
-            <td>generate_from_file('your_file.format', 'path_to_dir_data')</td>
+            <td>data_from_file('your_file.format', 'path_to_dir_data')</td>
             <td>Sienna</td>
         </tr>
         <tr>
             <td colspan="2"><sub>Function arguments are name of file (this file has to be saved
             in source_data directory) or name of file and path to your directory where is file.
-            Each content of row (in input file ) is saved into list from which random output is
-            generated. Default value of 'default_dir_data' is 'source_data/'.</sub>
+            Each content of row (in input file ) is saved as one string element of list.
+            Default value of 'default_dir_data' is 'source_data/'.</sub>
             </td>
         </tr>
         <tr>

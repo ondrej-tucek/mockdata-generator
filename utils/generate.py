@@ -365,11 +365,11 @@ def generate_website(args=None):
         return choice(websites_data).strip() + '.' + generate_domain()
 
 
-def generate_from_file(infile, default_dir_data='source_data/'):
+def data_from_file(infile, default_dir_data='source_data/'):
     data_dir = default_dir_data + infile
     data = open_file(data_dir)
 
-    return choice(data).strip()
+    return data
 
 
 def generate_files(
