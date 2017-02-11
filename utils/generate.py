@@ -93,7 +93,7 @@ def generate_year_month_day(args=None):
 
     Notes:
         - Default value of 'year_from' is 1900 and year_to = current year.
-        - Default order is (year, month, day).
+        - Default order is 'ymd', i.e. (year, month, day).
 
     Raises:
         ValueError: - If 'year_from' is greater than 'year_to'.
@@ -103,6 +103,7 @@ def generate_year_month_day(args=None):
 
     """
 
+    order_ymd = ''
     if args:
         if not 'year_from' in args:
             year_from = 1900
@@ -122,6 +123,17 @@ def generate_year_month_day(args=None):
             raise ValueError(
                 "Variable 'year_from' has to be less than 'year_to'!"
             )
+
+        if 'order_ymd' in args:
+            order_ymd = args['order_ymd']
+            if not isinstance(order_ymd, str):
+                raise TypeError("Variable 'order_ymd' has to be string!")
+            if not (
+                    order_ymd == 'ymd' or \
+                    order_ymd == 'dmy' or \
+                    order_ymd == 'myd'
+            ):
+                raise ValueError("Variable 'order_ymd' has to be either 'ymd', 'dmy' or 'myd'!")
     else:
         year_from = 1900
         year_to = datetime.now().year
@@ -132,22 +144,10 @@ def generate_year_month_day(args=None):
     day_list = list(filter(lambda x: x != 0, cal.itermonthdays(year, month)))
     day = choice(day_list)
 
-    if args:
-        if not 'order_ymd' in args:
-            order_ymd = (year, month, day)
-        elif args['order_ymd'] == 'ymd':
-            order_ymd = (year, month, day)
-        elif args['order_ymd'] == 'dmy':
-            order_ymd = (day, month, year)
-        elif args['order_ymd'] == 'myd':
-            order_ymd = (month, year, day)
-
-        if not isinstance(args['order_ymd'], str):
-            raise TypeError("Variable 'order_ymd' has to be string!")
-        if not (args['order_ymd'] == 'ymd' or \
-            args['order_ymd'] == 'dmy' or \
-        args['order_ymd'] == 'myd'):
-            raise ValueError("Variable 'order_ymd' has to be 'ymd', 'dmy' or 'myd'!")
+    if order_ymd == 'dmy':
+        order_ymd = (day, month, year)
+    elif order_ymd == 'myd':
+        order_ymd = (month, year, day)
     else:
         order_ymd = (year, month, day)
 
@@ -488,4 +488,49 @@ def generate_directories(
         num += 1
 
     print("Your generated directories were saved in '%s' directory." % (dir_save))
+
+
+def generate_array(num_of_element, func, *args):
+    arr = []
+
+    if args:
+        if 1 == len(args):
+            if isinstance(args[0], dict):
+                arg = args[0]
+                sorting = 'sort_asc'
+            if isinstance(args[0], str):
+                arg = {}
+                sorting = args[0]
+        elif 2 == len(args):
+            if isinstance(args[0], dict):
+                arg = args[0]
+                sorting = args[1]
+            if isinstance(args[0], str):
+                arg = args[1]
+                sorting = args[0]
+        elif 2 < len(args):
+            raise ValueError(
+                "Arguments have to contain either None or dictionary-args for "
+                "func and/or strings: {'sort_asc', 'sort_desc', 'no_sort'} "
+                "for sorting!"
+            )
+    else:
+        arg = {}
+        sorting = 'sort_asc'
+
+    for i in xrange(num_of_element):
+        arr.append(
+            func(arg)
+        )
+
+    if sorting == 'sort_asc':
+        return sorted(arr)
+    elif sorting == 'sort_desc':
+        return sorted(arr, reverse=True)
+    elif sorting == 'no_sort':
+        return arr
+    else:
+        raise ValueError("Variable 'sorting' has to be either sort_asc, 'sort_desc' or 'no_sort'!")
+
+
 

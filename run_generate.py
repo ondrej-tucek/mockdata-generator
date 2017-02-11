@@ -80,14 +80,7 @@ if __name__ == '__main__':
         'order_ymd': 'dmy'
     }
     users = 'users'
-    log_dates = 'log_dates'
     data[users] = []
-    log_dates = []
-
-    for i in xrange(3):
-        log_dates.append(
-            generate_date_time()
-        )
 
     for i in xrange(5):
         name = generate_from_file('_females_name.txt')
@@ -102,7 +95,7 @@ if __name__ == '__main__':
             'website': 'www.'+website+'.'+domain,
             'email': name+'.'+surname+'@'+website+'.'+domain,
             'born': generate_date(settings),
-            'log_dates': log_dates
+            'log_dates': generate_array(5, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'}, 'no_sort')
         })
 
     save_file(data, 'mockdata.json')
