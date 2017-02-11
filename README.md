@@ -34,6 +34,7 @@ settings = {
     'date_sep': '. ',
     'order_ymd': 'dmy'
 }
+num_of_el = 5
 users = 'users'
 data[users] = []
 
@@ -50,7 +51,7 @@ for i in xrange(5):
         'website': 'www.'+website+'.'+domain,
         'email': name+'.'+surname+'@'+website+'.'+domain,
         'born': generate_date(settings),
-        'log_dates': generate_array(5, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'}, 'no_sort')
+        'log_dates': generate_array(num_of_el, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'}, 'no_sort')
     })
 
 save_file(data, 'mockdata.json')
@@ -253,30 +254,31 @@ save_file(data, 'mockdata.json')
         </tr>
         <tr>
             <td rowspan="5">generating array for JSON object</td>
-            <td>generate_array(5, generate_date_time)</td>
+            <td><sub>num_of_el = 5</sub></br>
+                generate_array(num_of_el, generate_date_time)</td>
             <td>['1987-02-09--22-35', '1974-01-22--16-52', '1963-02-05--14-53',
             '1954-12-02--15-13', '1919-09-15--03-34']</td>
         </tr>
         <tr>
-            <td>generate_array(5, generate_date_time, 'no_sort')</td>
+            <td><sub>num_of_el = 5</sub></br>
+                generate_array(num_of_el, generate_date_time, 'no_sort')</td>
             <td>['1986-08-27T15:13', '1967-11-14T18:25', '1918-11-12T16:16',
                 '1903-05-24T20:52', '1902-12-08T22:11']</td>
         </tr>
         <tr>
-            <td>generate_array(5, generate_date_time, 'sort_desc')</td>
+            <td><sub>num_of_el = 5</sub></br>
+                generate_array(num_of_el, generate_date_time, 'sort_desc')</td>
             <td>['1980-06-23--11-49', '1976-01-24--19-33', '1968-04-13--16-38',
                 '1950-10-16--08-07', '1909-05-20--14-44']</td>
         </tr>
         <tr>
-            <td>generate_array(5, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'})</td>
+            <td><sub>num_of_el = 5</sub></br>
+                generate_array(num_of_el, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'})</td>
             <td>['1901-01-26T20:00', '1912-06-10T04:18', '1915-03-31T21:45',
                 '1934-10-22T21:30', '2017-03-02T20:09']</td>
         </tr>
         <tr>
-            <td colspan="2"><sub>Function arguments are name of file (this file has to be saved
-            in source_data directory) or name of file and path to your directory where is file.
-            Each content of row (in input file ) is saved into list from which random output is
-            generated. Default value of 'default_dir_data' is 'source_data/'.</sub>
+            <td colspan="2"><sub>DESCRIPTION ASAP.</sub>
             </td>
         </tr>
     </table>
