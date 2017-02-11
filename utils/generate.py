@@ -146,7 +146,7 @@ def generate_year_month_day(args=None):
             raise TypeError("Variable 'order_ymd' has to be string!")
         if not (args['order_ymd'] == 'ymd' or \
             args['order_ymd'] == 'dmy' or \
-            args['order_ymd'] == 'myd'):
+        args['order_ymd'] == 'myd'):
             raise ValueError("Variable 'order_ymd' has to be 'ymd', 'dmy' or 'myd'!")
     else:
         order_ymd = (year, month, day)
@@ -323,11 +323,11 @@ def generate_email(args=None):
         # names[0], names[1], separator, names[2], server_domain
         # firstname, surname, name_sep, server_name, server_domain
         return '%s%s%s@%s.%s' % (
-            choice(args['names'][0]).lstrip().rstrip(),
-            args['name_sep'].lstrip().rstrip(),
-            choice(args['names'][1]).lstrip().rstrip(),
-            choice(args['names'][2]).lstrip().rstrip(),
-            args['server_domain'].lstrip().rstrip()
+            choice(args['names'][0]).strip(),
+            args['name_sep'].strip(),
+            choice(args['names'][1]).strip(),
+            choice(args['names'][2]).strip(),
+            args['server_domain'].strip()
         )
     else:
         input_files = ['_males_name.txt', '_surnames.txt', '_websites_name.txt']
@@ -347,29 +347,29 @@ def generate_website(args=None):
 
     if args:
         if isinstance(args, list):
-            return choice(args).lstrip().rstrip() + '.' + generate_domain()
+            return choice(args).strip() + '.' + generate_domain()
 
         if not 'websites_data' in args:
             websites_data = open_file('source_data/_websites_name.txt')
 
-            return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
+            return choice(websites_data).strip() + '.' + generate_domain()
         else:
             websites_data = args['websites_data']
             if not isinstance(websites_data, list):
                 raise TypeError("Variable 'websites_data' has to be list!")
 
-            return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
+            return choice(websites_data).strip() + '.' + generate_domain()
     else:
         websites_data = open_file('source_data/_websites_name.txt')
 
-        return choice(websites_data).lstrip().rstrip() + '.' + generate_domain()
+        return choice(websites_data).strip() + '.' + generate_domain()
 
 
 def generate_from_file(infile, default_dir_data='source_data/'):
     data_dir = default_dir_data + infile
     data = open_file(data_dir)
 
-    return choice(data).lstrip().rstrip()
+    return choice(data).strip()
 
 
 def generate_files(

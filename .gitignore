@@ -8,6 +8,7 @@ simple_push.sh
 #.envs
 #data/out
 #examples/data_out
+mockdata.json
 utils/*.pyc
 
 # C extensions
