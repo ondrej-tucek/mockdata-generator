@@ -29,6 +29,12 @@ gd = generate_date()
 print(gd)
 ```
 ```Python
+from random import choice
+
+from utils.generate import *
+from utils.open_save_file import *
+
+
 settings = {
     'date_sep': '. ',
     'order_ymd': 'dmy'
