@@ -29,17 +29,27 @@ gd = generate_date()
 print(gd)
 ```
 ```Python
-data = {}
 settings = {
     'date_sep': '. ',
     'order_ymd': 'dmy'
 }
-num_of_el = 5
+
+data = {}
 users = 'users'
 data[users] = []
+items = ['item1', 'item2', 'item3']
+
 name_data = data_from_file('_females_name.txt')
 surname_data = data_from_file('_surnames.txt')
 website_data = data_from_file('_websites_name.txt')
+
+for i, item in enumerate(items):
+    data[item] = []
+    data[item].append({
+        'id': i,
+        'date': generate_date(),
+        'time': generate_time()
+    })
 
 for i in xrange(5):
     name = choice(name_data).strip()
@@ -54,7 +64,12 @@ for i in xrange(5):
         'website': 'www.'+website+'.'+domain,
         'email': name+'.'+surname+'@'+website+'.'+domain,
         'born': generate_date(settings),
-        'log_dates': generate_array(num_of_el, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'}, 'no_sort')
+        'log_dates': generate_array(
+            5,
+            generate_date_time,
+            {'dt_sep': 'T', 'time_sep': ':'},
+            'no_sort'
+        )
     })
 
 save_file(data, 'mockdata.json')
