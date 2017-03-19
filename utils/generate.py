@@ -13,7 +13,7 @@ from os import makedirs, path, getcwd
 from datetime import date, datetime
 from random import choice, randint
 from calendar import Calendar
-from string import ascii_lowercase
+from string import ascii_lowercase, ascii_uppercase
 
 from utils.open_save_file import open_file
 
@@ -532,5 +532,53 @@ def generate_array(num_of_element, func, *args):
     else:
         raise ValueError("Variable 'sorting' has to be either sort_asc, 'sort_desc' or 'no_sort'!")
 
+
+def generate_VRP(args=None):
+    """
+    Vehicle registration plates
+    """
+
+    country_VRP = {
+        'czech': ['A', 'B', 'C', 'E', 'H', 'J', 'K', 'L', 'M',\
+            'P', 'S', 'T', 'U', 'V', 'Z'],
+        'estonia': ['A', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',\
+            'O', 'P', 'R', 'S', 'T', 'V']
+    }
+
+    if args:
+        if 'code' in args:
+            args_code = args['code']
+        if not 'region' in args:
+            print('je tam')
+            args_region = ''
+
+        if not isinstance(args_code, str):
+            raise TypeError("Variable 'code' has to be string!")
+
+        if args_code in country_VRP:
+            if args_code == 'czech':
+
+                digits = str(randint(0, 9999)).zfill(4)
+                letter = choice(country_VRP['czech'])
+
+                if bool(args_region.strip()) or not args_region in country_VRP['czech']:
+                    letter = args_region
+                else:
+                    raise ValueError("Your 'region' code is wrong!")
+
+                return "%s%s%s %s" % (str(randint(0, 9)), letter, str(randint(0, 9)), digits)
+
+            elif args_code == 'estonia':
+                pass
+        else:
+            raise ValueError(
+                "Your country 'code' is not in our"
+                "VRP's database or you wrote incorrect!"
+            )
+    else:
+        return "%s%s%s %s" % (
+            str(randint(0, 9)), choice(ascii_uppercase), str(randint(0, 9)),
+            str(randint(0, 9999)).zfill(4)
+        )
 
 

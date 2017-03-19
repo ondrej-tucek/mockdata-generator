@@ -119,3 +119,5 @@ if __name__ == '__main__':
 
     save_file(data, 'mockdata.json')
 
+    print(generate_VRP())
+    print(generate_VRP({'code': 'czech'}))

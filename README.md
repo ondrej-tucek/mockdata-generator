@@ -308,3 +308,5 @@ save_file(data, 'mockdata.json')
     </table>
 </center>
 
+## License
+[![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://github.com/ondrej-tucek/mockdata-generator/blob/master/LICENSE)
