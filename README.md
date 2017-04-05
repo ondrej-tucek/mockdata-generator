@@ -220,9 +220,9 @@ save_file(data, 'mockdata.json')
     <tr>
         <td rowspan="3">
             number_of_dir = 10</br>
-            generate_func = <div style="padding-left:15px;">generate_date_time </div>
+            generate_func = generate_date_time </br>
             func_args = {...}</br>
-            path_to_exist_dir = <div style="padding-left:15px;">'/temp/gen_dirs'</div>
+            path_to_exist_dir = '/temp/gen_dirs'</br>
         </td>
         <td>generate_directories(
             <div style="padding-left:15px;">number_of_dir, generate_func, func_args
@@ -262,12 +262,10 @@ save_file(data, 'mockdata.json')
     <tr>
         <td rowspan="3">args = {
             <div style="padding-left:15px;">
-                'name_sep': '.',
-                'server_domain': <div style="padding-left:15px;">generate_domain(),</div>
-                'names': <div style="padding-left:15px;">
-                    ['_females_name.txt', '_surnames.txt', '_websites_name.txt'],
-                        </div>
-                'directory_data': <div style="padding-left:15px;">'source_data/'</div>
+                'name_sep': '.', </br>
+                'server_domain': generate_domain(),</br>
+                'names': ['_females_name.txt', '_surnames.txt', '_websites_name.txt'],</br>
+                'directory_data': 'source_data/'
             </div>}
         </td>
         <td>generate_email()</td>
