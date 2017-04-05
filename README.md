@@ -10,7 +10,7 @@ or on the web:
 - [Mockaroo](https://www.mockaroo.com/)
 
 
-### Advantages
+### Advantages of this generator:
 *   generating from yours data, for example emails...
 *   generating files
 *   generating directories
@@ -74,6 +74,7 @@ for i in xrange(5):
 save_file(data, 'mockdata.json')
 ```
 
+### List of available functions:
 <table>
     <!--<tr><td  colspan="3"></td></tr>-->
     <thead style="border-bottom: 3px solid #FF7F0E; border-top: 3px solid #FF7F0E;">
