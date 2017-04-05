@@ -192,7 +192,7 @@ save_file(data, 'mockdata.json')
         <td rowspan="3">
             number_of_files = 10</br>
             generate_func = <div style="padding-left:15px;">generate_date_time </div>
-            func_args = {...}
+            func_args = {...}</br>
             file_format = "txt"</br>
             path_to_exist_dir = <div style="padding-left:15px;">'/temp/gen_files'</div>
         </td>
