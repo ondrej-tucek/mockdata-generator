@@ -334,7 +334,7 @@ save_file(data, 'mockdata.json')
         <td rowspan="5">
             num_of_el = 3</br>
             generate_func = generate_date_time</br>
-            sorting = ['sort_asc' | 'sort_desc' | 'no_sort']</br>
+            sorting = ...</br>
             args = {
             <div style="padding-left:15px;">
                 'dt_sep': 'T',</br>
@@ -369,7 +369,11 @@ save_file(data, 'mockdata.json')
         <td>['1901-01-26T20:00', '1912-06-10T04:18', '1915-03-31T21:45']</td>
     </tr>
     <tr>
-        <td colspan="2"><sub>Default value of sorting is set up on 'sort_asc'</sub>
+        <td colspan="2">
+            <sub>
+                Default value of sorting is set up on 'sort_asc' and can be 'sort_asc',
+                'sort_desc' or 'no_sort'.
+            </sub>
         </td>
     </tr>
 </table>
