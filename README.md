@@ -1,12 +1,19 @@
 
-Mock/fake data creator. Of course there exist another a couple projects in Python, see:
+## Mock/fake data creator
+Of course there exist another a couple projects in Python, see:
 - [Barnum](https://github.com/chris1610/barnum-proj)
 - [Yan DATA](http://www.yandataellan.com/)
 - [Faker](https://github.com/joke2k/faker)
 
-and on the web:
+or on the web:
 - [JSON Generator](http://beta.json-generator.com/)
 - [Mockaroo](https://www.mockaroo.com/)
+
+
+### Advantages
+*   generating from yours data, for example emails...
+*   generating files
+*   generating directories
 
 
 ### Usage:
