@@ -49,15 +49,11 @@ if __name__ == '__main__':
     # generate_directories(number_of_dir, generate_date_time, func_args)
     # generate_directories(number_of_dir, generate_date_time, func_args, path_to_dir)
 
-    input_files = ['_females_name.txt', '_surnames.txt', '_websites_name.txt']
-    directory_data = 'source_data/'
     args = {
         'name_sep': '.',
         'server_domain': generate_domain(),
-        'names': list(map(
-            lambda data:
-            open_file(directory_data + str(data)),
-            input_files))
+        'names': ['_females_name.txt', '_surnames.txt', '_websites_name.txt'],
+        'directory_data': 'source_data/'
     }
     email = generate_email()
     print(email)

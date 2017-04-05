@@ -320,25 +320,29 @@ def generate_email(args=None):
     """
 
     if args:
-        # names[0], names[1], separator, names[2], server_domain
         # firstname, surname, name_sep, server_name, server_domain
+        # names[0], names[1], separator, names[2], server_domain
+        names = list(
+            map(
+                lambda data:
+                open_file('%s%s' % (args['directory_data'], str(data))),
+                args['names']
+            )
+        )
+
         return '%s%s%s@%s.%s' % (
-            choice(args['names'][0]).strip(),
+            choice(names[0]).strip(),
             args['name_sep'].strip(),
-            choice(args['names'][1]).strip(),
-            choice(args['names'][2]).strip(),
+            choice(names[1]).strip(),
+            choice(names[2]).strip(),
             args['server_domain'].strip()
         )
     else:
-        input_files = ['_males_name.txt', '_surnames.txt', '_websites_name.txt']
-        directory_data = 'source_data/'
         args = {
             'name_sep': '.',
             'server_domain': generate_domain(),
-            'names': list(map(
-                lambda data:
-                open_file(directory_data + str(data)),
-                input_files))
+            'names': ['_males_name.txt', '_surnames.txt', '_websites_name.txt'],
+            'directory_data': 'source_data/'
         }
         return generate_email(args)
 

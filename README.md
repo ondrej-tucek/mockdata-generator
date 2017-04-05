@@ -1,5 +1,5 @@
 
-Of course there exist another a couple projects in Python, see:
+Mock/fake data creator. Of course there exist another a couple projects in Python, see:
 - [Barnum](https://github.com/chris1610/barnum-proj)
 - [Yan DATA](http://www.yandataellan.com/)
 - [Faker](https://github.com/joke2k/faker)
@@ -9,26 +9,12 @@ and on the web:
 - [Mockaroo](https://www.mockaroo.com/)
 
 
-
 ### Usage:
 ```
     $ ipython run_generate.py
 ```
 ```Python
-# In run_generate.py you can define e.g.
-args = {
-    'year_from': 1950,
-    'year_to': 2017,
-    'order_ymd': 'dmy',
-    'date_sep': '/',
-    'dt_sep': '--',
-    'time_sep': ':'
-}
-# ...
-gd = generate_date()
-print(gd)
-```
-```Python
+# run_generate.py
 from random import choice
 
 from utils.generate import *
@@ -81,232 +67,313 @@ for i in xrange(5):
 save_file(data, 'mockdata.json')
 ```
 
-<center>
-    <table>
-        <tr>
-            <th>Description</th>
-            <th>Function name</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td rowspan="3">generating of times</td>
-            <td>generate_time()</td>
-            <td>08-40</td>
-        </tr>
-        <tr>
-            <td>generate_time({'time_sep': ':'})</td>
-            <td>09:40</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None or args = {'time_sep': ':'}
-                Default value of 'time_sep' is '-'.</sub>
-            </td>
-        </tr>
-        <tr></tr><tr></tr>
-        <tr>
-            <td rowspan="4">generating of year, month and day as tuple</td>
-            <td>generate_year_month_day()</td>
-            <td>(1983, 7, 4)</td>
-        </tr>
-        <tr>
-            <td>generate_year_month_day(args)</td>
-            <td>(1964, 8, 9)</td>
-        </tr>
-        <tr>
-            <td>generate_year_month_day({'order_ymd': 'dmy'})</td>
-            <td>(23, 11, 1932)</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None or args = {
-                    'year_from': 1950,
-                    'year_to': 2017,
-                    'order_ymd': 'dmy'
-                    }. Default values are set up on
-                    'year_from': 1900,
-                    'year_to': current year,
-                    'order_ymd': 'ymd' ('myd', 'dmy')
-                </sub>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="3">generating of dates</td>
-            <td>generate_date()</td>
-            <td>1966-10-17</td>
-        </tr>
-        <tr>
-            <td>generate_date(args)</td>
-            <td>1976/09/23</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None or args = {
+<table>
+    <!--<tr><td  colspan="3"></td></tr>-->
+    <thead style="border-bottom: 3px solid #FF7F0E; border-top: 3px solid #FF7F0E;">
+    <tr>
+        <th>Function arguments</th>
+        <th>Function usage</th>
+        <th>Output</th>
+    </tr>
+    </thead>
+    <tr>
+        <td colspan="3"><b>generating of times</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">args = {
+            <div style="padding-left:15px;">
+                'time_sep': ':'
+            </div>}
+        </td>
+        <td>generate_time()</td>
+        <td>08-40</td>
+    </tr>
+    <tr>
+        <td>generate_time(args)</td>
+        <td>09:40</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <sub>
+                Default value of 'time_sep' is '-'.
+            </sub>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating of year, month and day as tuple</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3" style="width: 180px;">args = {
+            <div style="padding-left:15px;">
+                'year_from': 1950,
+                'year_to': 2017,
+                'order_ymd': 'dmy'
+            </div>}
+        </td>
+        <td>generate_year_month_day()</td>
+        <td>(1983, 7, 4)</td>
+    </tr>
+    <tr>
+        <td>generate_year_month_day(args)</td>
+        <td>(23, 11, 1932)</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <sub>Default values are set up on
+                'year_from': 1900,
+                'year_to': current year,
+                'order_ymd': 'ymd' ('myd', 'dmy')
+            </sub>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating of dates</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">args = {
+            <div style="padding-left:15px;">
                 'year_from': 1950,
                 'year_to': 2017,
                 'date_sep': '/'
-                }. Default values are set up on
+            </div>}
+        </td>
+        <td>generate_date()</td>
+        <td>1966-10-17</td>
+    </tr>
+    <tr>
+        <td>generate_date(args)</td>
+        <td>1976/09/23</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <sub>Default values are set up on
                 'year_from': 1900,
                 'year_to': current year,
-                'date_sep': '-'</sub>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="3">generating of dates and times</td>
-            <td>generate_date_time()</td>
-            <td>1933-02-19--17-31</td>
-        </tr>
-        <tr>
-            <td>generate_date_time(args)</td>
-            <td>02/06/1993T22:08</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None or args = {
+                'date_sep': '-'
+            </sub>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating of dates and times</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">args = {
+            <div style="padding-left:15px;">
                 'year_from': 1950,
                 'year_to': 2017,
                 'order_ymd': 'dmy',
                 'date_sep': '/',
                 'dt_sep': 'T',
                 'time_sep': ':'
-                }. Default values are set up on
+            </div>}
+        </td>
+        <td>generate_date_time()</td>
+        <td>1933-02-19--17-31</td>
+    </tr>
+    <tr>
+        <td>generate_date_time(args)</td>
+        <td>02/06/1993T22:08</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <sub>Default values are set up on
                 'year_from': 1900,
                 'year_to': current year,
                 'date_sep': '-',
                 'dt_sep': '--',
                 'time_sep': '-'
-                </sub>
-        </tr>
-        <tr>
-            <td rowspan="3">generating files</td>
-            <td><sub>number_of_files = 10</br>
-                file_format = "txt"</br></sub>
-                generate_files(number_of_files, generate_date_time, func_args, file_format)</td>
-            <td>in directory 'generated_data'</br> is 10 txt files</td>
-        </tr>
-        <tr>
-            <td><sub>number_of_files = 10</br>
-                file_format = "txt"</br>
-                path_to_exist_dir = '/temp/gen_files'</br></sub>
-                generate_files(number_of_files, generate_date_time, func_args, file_format, path_to_exist_dir)</td>
-            <td>in directory '/temp/gen_files'</br> is 10 txt files</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are number_of_files, generate_func, func_args
-            file_format and path_to_exist_dir. Default directory for generated files is in 'generated_data'.
-            Note: Output of generate_func has to be permissible string. 'Permissible' means
-            what your system allows to save on your hard drive.</sub>
-        </tr>
-        <tr>
-            <td rowspan="3">generating directories</td>
-            <td><sub>number_of_dir = 10</br></sub>
-                generate_directories(number_of_dir, generate_date_time, func_args)</td>
-            <td>in directory 'generated_data'</br> is 10 txt directories</td>
-        </tr>
-        <tr>
-            <td><sub>number_of_dir = 10</br>
-                path_to_exist_dir = '/temp/gen_dirs'</br></sub>
-                generate_directories(number_of_dir, generate_date_time, func_args, path_to_exist_dir)</td>
-            <td>in directory '/temp/gen_dirs'</br> is 10 txt directories</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are number_of_dir, generate_func, func_args
-            and path_to_exist_dir. Default directory for generated directories is in 'generated_data'.
-            Note: Output of generate_func has to be permissible string. 'Permissible' means
-            what your system allows to save on your hard drive.</sub>
-        </tr>
-        <tr>
-            <td rowspan="3">generating of domains</td>
-            <td>generate_domain()</td>
-            <td>ya</td>
-        </tr>
-        <tr>
-            <td>generate_domain()</td>
-            <td>oki</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function argument is None and generates two-letter or
-            three-letter server domain.</sub>
-        </tr>
-        <tr>
-            <td rowspan="3">generating of emails</td>
-            <td>generate_email()</td>
-            <td>Elvis.Wexcombe@escavalie.cj</td>
-        </tr>
-        <tr>
-            <td>generate_email(args)</td>
-            <td>Kirstin.Westbrook@lilligant.shi</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None or args...NOT DONE.</sub>
-        </tr>
-            <td rowspan="4">generating of websites</td>
-            <td>generate_website()</td>
-            <td>serperior.pu</td>
-        </tr>
-        <tr>
-            <td><sub>websites_data = open_file('source_data/_websites_name.txt')</br>
-            args = {</br>
-                'websites_data': websites_data</br>
-            }</sub></br>
-            generate_website(args)
-            </td>
-            <td>swanna.nq</td>
-        </tr>
-        <tr>
-            <td><sub>websites_data = open_file('source_data/_websites_name.txt')</sub></br>
-            generate_website(websites_data)
-            </td>
-            <td>eelektros.gh</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are None, args contains variable
-            'websites_data' or list of strings.</sub>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="3">data from your file</td>
-            <td>data_from_file('_females_name.txt')</td>
-            <td>Hannah</td>
-        </tr>
-        <tr>
-            <td>data_from_file('your_file.format', 'path_to_dir_data')</td>
-            <td>Sienna</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>Function arguments are name of file (this file has to be saved
+            </sub>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating files</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">
+            number_of_files = 10</br>
+            generate_func = <div style="padding-left:15px;">generate_date_time </div>
+            func_args = {...}
+            file_format = "txt"</br>
+            path_to_exist_dir = <div style="padding-left:15px;">'/temp/gen_files'</div>
+        </td>
+        <td>generate_files(
+                <div style="padding-left:15px;">number_of_files, generate_func, </br>func_args, file_format
+                </div>)
+        </td>
+        <td>in directory 'generated_data' is 10 txt files</td>
+    </tr>
+    <tr>
+        <td>
+            generate_files(
+                <div style="padding-left:15px;">number_of_files, generate_date_time, func_args, file_format, path_to_exist_dir
+                </div>)</td>
+        <td>in directory '/temp/gen_files'</br> is 10 txt files</td>
+    </tr>
+    <tr>
+        <td colspan="2"><sub>Default directory for generated files is in 'generated_data'.
+        Note: Output of generate_func has to be permissible string. 'Permissible' means
+        what your system allows to save on your hard drive.</sub>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating directories</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">
+            number_of_dir = 10</br>
+            generate_func = <div style="padding-left:15px;">generate_date_time </div>
+            func_args = {...}</br>
+            path_to_exist_dir = <div style="padding-left:15px;">'/temp/gen_dirs'</div>
+        </td>
+        <td>generate_directories(
+            <div style="padding-left:15px;">number_of_dir, generate_func, func_args
+            </div>)
+        </td>
+        <td>in directory 'generated_data' is 10 txt directories</td>
+    </tr>
+    <tr>
+        <td>generate_directories(
+            <div style="padding-left:15px;">number_of_dir, generate_date_time, func_args, path_to_exist_dir
+            </div>)</td>
+        <td>in directory '/temp/gen_dirs' is 10 txt directories</td>
+    </tr>
+    <tr>
+        <td colspan="2"><sub>Default directory for generated directories is in 'generated_data'.
+        Note: Output of generate_func has to be permissible string. 'Permissible' means
+        what your system allows to save on your hard drive.</sub>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating of domains</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">None</td>
+        <td>generate_domain()</td>
+        <td>ya</td>
+    </tr>
+    <tr>
+        <td>generate_domain()</td>
+        <td>oki</td>
+    </tr>
+    <tr>
+        <td colspan="2"><sub>Function generates two-letter or three-letter server domain.</sub>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating of emails</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">args = {
+            <div style="padding-left:15px;">
+                'name_sep': '.',
+                'server_domain': <div style="padding-left:15px;">generate_domain(),</div>
+                'names': <div style="padding-left:15px;">
+                    ['_females_name.txt', '_surnames.txt', '_websites_name.txt'],
+                        </div>
+                'directory_data': <div style="padding-left:15px;">'source_data/'</div>
+            </div>}
+        </td>
+        <td>generate_email()</td>
+        <td>Elvis.Wexcombe@escavalie.cj</td>
+    </tr>
+    <tr>
+        <td>generate_email(args)</td>
+        <td>Kirstin.Westbrook@lilligant.shi</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <sub>
+                Default values are set up on
+                'names': [_males_name.txt', '_surnames.txt', '_websites_name.txt']
+            </sub>
+        </td>
+    <tr>
+        <td colspan="3"><b>generating of websites</b></td>
+    </tr>
+    </tr>
+        <td rowspan="3"># list of strings</br>
+        websites_data = open_file('source_data/_websites_name.txt')</br>
+        OR</br>
+        args = {
+            <div style="padding-left:15px;">
+                'websites_data': websites_data
+            </div>}
+        </td>
+        <td>generate_website()</td>
+        <td>serperior.pu</td>
+    </tr>
+    <tr>
+        <td>generate_website(websites_data)</td>
+        <td>swanna.nq</td>
+    </tr>
+    <tr>
+        <td>generate_website(args)</td>
+        <td>eelektros.gh</td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>data from your file</b></td>
+    </tr>
+    <tr>
+        <td rowspan="3">
+            Function arguments are name of file (this file has to be saved
             in source_data directory) or name of file and path to your directory where is file.
             Each content of row (in input file ) is saved as one string element of list.
-            Default value of 'default_dir_data' is 'source_data/'.</sub>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="5">generating array for JSON object</td>
-            <td><sub>num_of_el = 5</sub></br>
-                generate_array(num_of_el, generate_date_time)</td>
-            <td>['1987-02-09--22-35', '1974-01-22--16-52', '1963-02-05--14-53',
-            '1954-12-02--15-13', '1919-09-15--03-34']</td>
-        </tr>
-        <tr>
-            <td><sub>num_of_el = 5</sub></br>
-                generate_array(num_of_el, generate_date_time, 'no_sort')</td>
-            <td>['1986-08-27T15:13', '1967-11-14T18:25', '1918-11-12T16:16',
-                '1903-05-24T20:52', '1902-12-08T22:11']</td>
-        </tr>
-        <tr>
-            <td><sub>num_of_el = 5</sub></br>
-                generate_array(num_of_el, generate_date_time, 'sort_desc')</td>
-            <td>['1980-06-23--11-49', '1976-01-24--19-33', '1968-04-13--16-38',
-                '1950-10-16--08-07', '1909-05-20--14-44']</td>
-        </tr>
-        <tr>
-            <td><sub>num_of_el = 5</sub></br>
-                generate_array(num_of_el, generate_date_time, {'dt_sep': 'T', 'time_sep': ':'})</td>
-            <td>['1901-01-26T20:00', '1912-06-10T04:18', '1915-03-31T21:45',
-                '1934-10-22T21:30', '2017-03-02T20:09']</td>
-        </tr>
-        <tr>
-            <td colspan="2"><sub>DESCRIPTION ASAP.</sub>
-            </td>
-        </tr>
-    </table>
-</center>
+        </td>
+        <td>data_from_file('_females_name.txt')</td>
+        <td>Hannah</td>
+    </tr>
+    <tr>
+        <td>data_from_file('your_file.format', 'path_to_dir_data')</td>
+        <td>Sienna</td>
+    </tr>
+    <tr>
+        <td colspan="2"><sub>Default value of 'default_dir_data' is 'source_data/'.</sub>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>generating array for JSON object</b></td>
+    </tr>
+    <tr>
+        <td rowspan="5">
+            num_of_el = 3</br>
+            generate_func = generate_date_time</br>
+            sorting = ['sort_asc' | 'sort_desc' | 'no_sort']</br>
+            args = {
+            <div style="padding-left:15px;">
+                'dt_sep': 'T',</br>
+                'time_sep': ':'
+            </div>}
+        </td>
+        <td>generate_array(
+            <div style="padding-left:15px;">num_of_el, generate_func
+            </div>)
+        </td>
+        <td>['1987-02-09--22-35', '1974-01-22--16-52', '1963-02-05--14-53']</td>
+    </tr>
+    <tr>
+        <td>generate_array(
+            <div style="padding-left:15px;">num_of_el, generate_func, 'no_sort'
+            </div>)
+        </td>
+        <td>['1986-08-27T15:13', '1967-11-14T18:25', '1918-11-12T16:16']</td>
+    </tr>
+    <tr>
+        <td>generate_array(
+            <div style="padding-left:15px;">num_of_el, generate_func, 'sort_desc'
+            </div>)
+        </td>
+        <td>['1980-06-23--11-49', '1976-01-24--19-33', '1968-04-13--16-38']</td>
+    </tr>
+    <tr>
+        <td>generate_array(
+            <div style="padding-left:15px;">num_of_el, generate_func, args
+            </div>)
+        </td>
+        <td>['1901-01-26T20:00', '1912-06-10T04:18', '1915-03-31T21:45']</td>
+    </tr>
+    <tr>
+        <td colspan="2"><sub>Default value of sorting is set up on 'sort_asc'</sub>
+        </td>
+    </tr>
+</table>
+
 
 ## License
 [![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://github.com/ondrej-tucek/mockdata-generator/blob/master/LICENSE)
